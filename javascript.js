@@ -40,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
       return `Player wins! Paper beats rock`
     }
   }
-  else {
+  else if (playerPick == SCISSORS) {
     if (computerSelection == PAPER) {
       return `Player wins! Scissors beats paper`
     }
@@ -48,8 +48,15 @@ function playRound(playerSelection, computerSelection) {
       return `Computer wins! Rock beats scissors`
     }
   }
+  else {
+    return `You lose! Pick a valid option`
+  }
 }
- 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+  // for some reason only the first prompt includes the message in firefox
+  // runs fine in chrome, so im not sure what the problem is
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound(prompt("Rock, Paper, or Scissors?"), getComputerChoice()))
+  }
+}
